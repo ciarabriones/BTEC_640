@@ -34,3 +34,9 @@
 ### To move file to a different directory:
 ```mv file_name location/```
 
+awk
+
+### Show only the first occurance:
+```!seen[x]++
+x = $1, $2, $3,... (table number)
+```
