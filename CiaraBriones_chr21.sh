@@ -11,11 +11,9 @@
 #- Extract the gene names and accession numbers on chromosome 21.
 #- Randomly select 20 genes and download their actual sequences from NCBI, in a single loop.
 #------------------------------------------------------------------
-bash
-cd Documents
-cd btec_640
+bash #Always make sure you are in the bash shell before running this script.
+mkdir -p class_exercises/9_14_26/ class_exercisesinput_data/ class_exercises/analysis/ #This command creates the directories for the exercise, if they do not already exist.
 cd class_exercises
-cd 9_14_26
 cd input_data
 
 curl -o hg38.ncbiRefSeq.gtf.gz "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ncbiRefSeq.gtf.gz"   #This command downloads the URL to the directory you are currently in.
@@ -25,6 +23,9 @@ less hg38.ncbiRefSeq.gtf.gz #This command allows you to view the contents of the
 gunzip hg38.ncbiRefSeq.gtf.gz #This command unzips the file.
 
 ln -s ../input_data/hg38.ncbiRefSeq.gtf #This command creates a soft link to the file in the current directory.
+
+cd ../ #This command moves you to the previous directory.
+cd analysis
 
 grep -c "chr21" hg38.ncbiRefSeq.gtf #This command counts the number of lines in the file that contain the string "chr21", which corresponds to chromosome 21.
 
