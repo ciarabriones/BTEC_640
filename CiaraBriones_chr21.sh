@@ -22,10 +22,10 @@ less hg38.ncbiRefSeq.gtf.gz #This command allows you to view the contents of the
 
 gunzip hg38.ncbiRefSeq.gtf.gz #This command unzips the file.
 
-ln -s ../input_data/hg38.ncbiRefSeq.gtf #This command creates a soft link to the file in the current directory.
-
 cd ../ #This command moves you to the previous directory.
-cd analysis
+cd analysis #This command opens the analysis directory.
+
+ln -s ../input_data/hg38.ncbiRefSeq.gtf #This command creates a soft link to the file in the current directory.
 
 grep -c "chr21" hg38.ncbiRefSeq.gtf #This command counts the number of lines in the file that contain the string "chr21", which corresponds to chromosome 21.
 
@@ -33,9 +33,6 @@ grep "NM_" chr21.gtf > refseq_chr21.gtf #This command extracts all lines from th
 
 grep "NM_" chr21.gtf > refseq_chr21.gtf #This command extracts all lines from the file that contain the string "NM_", which corresponds to accession numbers, and saves them to a new file called refseq_chr21.gtf.
 
-awk -F '\t' '{print $9}' refseq_chr21.gtf | head #This command prints the 9th column of the file.
-
-awk -F '"' '{print $2, $4}' | head #This commands extracts only the table 2 and 4 from column 9.
 
 awk -F '\t' '{print $9}' refseq_chr21.gtf  | awk -F'"' '!seen[$2]++ {print $2, $4}' refseq_chr21.gtf > gene_accession.txt #This command extracts only the first row from table 2 and 4 from column 9.
 
@@ -55,7 +52,9 @@ done < 10_genes.txt
 #This command reads each line from the file 10_genes.txt, and for each line, it extracts the gene name and accession number, and uses them to download the corresponding sequence in FASTA format from NCBI.
 
 # To check the results:
-ls -l *.fasta
+ls -l *.fasta 
+
+
 
 
 
