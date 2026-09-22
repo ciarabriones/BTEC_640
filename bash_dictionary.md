@@ -1,4 +1,7 @@
-# Bash dictionary
+# Author: Ciara Briones
+### Bash dictionary
+### BTEC_640
+
 
 
 ### Do this at the start of using terminal to make sure you are using Bash!

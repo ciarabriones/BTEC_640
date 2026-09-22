@@ -12,13 +12,13 @@
 #- Randomly select 20 genes and download their actual sequences from NCBI, in a single loop.
 #------------------------------------------------------------------
 bash #Always make sure you are in the bash shell before running this script.
-mkdir -p class_exercises/9_14_26/ class_exercisesinput_data/ class_exercises/analysis/ #This command creates the directories for the exercise, if they do not already exist.
+mkdir -p class_exercises/9_14_26/ class_exercises/input_data/ class_exercises/analysis/ #This command creates the directories for the exercise, if they do not already exist.
 cd class_exercises
 cd input_data
 
 curl -o hg38.ncbiRefSeq.gtf.gz "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ncbiRefSeq.gtf.gz"   #This command downloads the URL to the directory you are currently in.
 
-less hg38.ncbiRefSeq.gtf.gz #This command allows you to view the contents of the file. You can use the arrow keys to scroll through the file, and press 'q' to quit.
+# Doesn't have to be included but "less hg38.ncbiRefSeq.gtf.gz"  allows you to view the contents of the file. You can use the arrow keys to scroll through the file, and press 'q' to quit.
 
 gunzip hg38.ncbiRefSeq.gtf.gz #This command unzips the file.
 
@@ -28,8 +28,6 @@ cd analysis #This command opens the analysis directory.
 ln -s ../input_data/hg38.ncbiRefSeq.gtf #This command creates a soft link to the file in the current directory.
 
 grep -c "chr21" hg38.ncbiRefSeq.gtf #This command counts the number of lines in the file that contain the string "chr21", which corresponds to chromosome 21.
-
-grep "NM_" chr21.gtf > refseq_chr21.gtf #This command extracts all lines from the file that contain the string "NM_", which corresponds to RefSeq accession numbers, and saves them to a new file called refseq_chr21.gtf.
 
 grep "NM_" chr21.gtf > refseq_chr21.gtf #This command extracts all lines from the file that contain the string "NM_", which corresponds to accession numbers, and saves them to a new file called refseq_chr21.gtf.
 
